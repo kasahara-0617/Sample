@@ -1,0 +1,136 @@
+/* --------------------------------
+* base
+* -------------------------------- */
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  white-space: nowrap;
+  font-size: 1.6em;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background-color: #fff;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* -------------------------------- header -------------------------------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.875rem 0;
+  font-size: 1.625rem;
+  font-weight: 700;
+  text-align: center;
+  background-color: #333;
+  z-index: 999;
+}
+
+/* -------------------------------- blindfold -------------------------------- */
+.blindfold {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ff0;
+}
+
+/* -------------------------------- main -------------------------------- */
+main {
+  width: 100%;
+  height: 100vh;
+  background: url(../images/image01.jpg) no-repeat center/cover;
+}
+main.active {
+  background: url(../images/image02.jpg) no-repeat center/cover;
+}
+main section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+main section h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+main section a {
+  display: block;
+  width: 16.25rem;
+  margin-top: 1.875rem;
+  padding: 0.75rem 0;
+  border-radius: 2em;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  background-color: #333;
+  transition: all 0.3s;
+}
+main section a:hover {
+  background-color: #d00;
+}/*# sourceMappingURL=style.css.map */

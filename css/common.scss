@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+//////////////////////////////
+// clampの自動計算
+//////////////////////////////
+@use "sass:math";
+
+@function responsiveClamp($minFontSize, $maxFontSize, $minViewport, $maxViewport) {
+  // font-size: responsiveClamp(最小フォントサイズ, 最大フォントサイズ, 最小画面幅, 最大画面幅);
+
+  // 最大font-sizeから最小font-sizeを減算しフォントサイズの変化する幅を求める
+  $fontSizeRate: $maxFontSize - $minFontSize;
+  // 最大viewportから最小viewportを減算しウィンドウの変化する幅を求める
+  $viewportRate: $maxViewport - $minViewport;
+
+  // フォントが変化する量をvw単位にする計算
+  $changingSize: math.div(math.round(math.div($fontSizeRate, $viewportRate) * 10000), 100);
+
+  // フォントが変化しない部分をrem単位にする計算
+  $fixedSize: math.div(math.round(($minFontSize - math.div($fontSizeRate, $viewportRate) * $minViewport) * 62.5), 1000);
+
+  // 最小フォントサイズをrem単位にする計算
+  $minRemFontSize: math.div(math.round($minFontSize * 62.5), 1000);
+
+  // 最大フォントサイズをrem単位にする計算
+  $maxRemFontSize: math.div(math.round($maxFontSize * 62.5), 1000);
+
+  // 出力
+  @return clamp(#{$minRemFontSize}rem, #{$fixedSize}rem + #{$changingSize}vw, #{$maxRemFontSize}rem);
+}
+
+
+//////////////////////////////
+// pxをremに変換
+//////////////////////////////
+@function rem($pixels, $base: 16) {
+  @return ($pixels / $base) * 1rem;
+}
+
+
+//////////////////////////////
+// ブレイクポイント
+//////////////////////////////
+$breakpoint: (
+  tab: "screen and (max-width: 1024px)",
+  sp: "screen and (max-width: 599px)",
+);
+
+@mixin mq($bp) {
+  @media #{map-get($breakpoint, $bp)} {
+    @content;
+  }
+}
+
+
+//////////////////////////////
+// カラーパレット
+//////////////////////////////
+$black: #333;
+$white: #fff;
+$red: #d00;
+$yellow: #ff0;
